@@ -1,0 +1,72 @@
+<audio
+  #audioRef
+  (timeupdate)="onTimeUpdate()"
+  (loadedmetadata)="onTimeUpdate()"
+  (ended)="onTrackEnded()">
+</audio>
+
+<footer class="bg-panel border-top border-secondary-subtle px-3 py-2">
+  <div class="row align-items-center gx-2">
+
+    <!-- Now playing info -->
+    <div class="col-4 col-md-3 d-flex align-items-center gap-2 text-truncate">
+      <ng-container *ngIf="currentSong; else noSong">
+        <img [src]="currentSong.cover" [alt]="currentSong.title" width="48" height="48" class="rounded" />
+        <div class="text-truncate d-none d-sm-block">
+          <div class="text-truncate small fw-semibold">{{ currentSong.title }}</div>
+          <div class="text-truncate text-muted-custom" style="font-size: 0.75rem;">{{ currentSong.artist }}</div>
+        </div>
+      </ng-container>
+      <ng-template #noSong>
+        <div class="text-muted-custom small">No track selected</div>
+      </ng-template>
+    </div>
+
+    <!-- Playback controls -->
+    <div class="col-4 col-md-6">
+      <div class="d-flex flex-column align-items-center">
+        <div class="d-flex align-items-center gap-3 mb-1">
+          <i class="bi bi-shuffle text-muted-custom d-none d-md-inline cursor-pointer"></i>
+          <i class="bi bi-skip-start-fill fs-5 cursor-pointer" (click)="previous()"></i>
+          <button
+            class="btn btn-light rounded-circle d-flex align-items-center justify-content-center play-btn"
+            (click)="togglePlay()"
+            [disabled]="!currentSong">
+            <i class="bi" [ngClass]="isPlaying ? 'bi-pause-fill' : 'bi-play-fill'"></i>
+          </button>
+          <i class="bi bi-skip-end-fill fs-5 cursor-pointer" (click)="next()"></i>
+          <i class="bi bi-repeat text-muted-custom d-none d-md-inline cursor-pointer"></i>
+        </div>
+
+        <!-- Seek bar -->
+        <div class="d-none d-md-flex align-items-center gap-2 w-100" style="max-width: 480px;">
+          <span class="text-muted-custom" style="font-size: 0.7rem;">{{ formatTime(currentTime) }}</span>
+          <input
+            type="range"
+            class="form-range flex-grow-1"
+            min="0"
+            [max]="duration || 0"
+            [value]="currentTime"
+            (input)="onSeek($event)"
+          />
+          <span class="text-muted-custom" style="font-size: 0.7rem;">{{ formatTime(duration) }}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Volume -->
+    <div class="col-4 col-md-3 d-none d-sm-flex align-items-center justify-content-end gap-2">
+      <i class="bi bi-volume-up-fill text-muted-custom"></i>
+      <input
+        type="range"
+        class="form-range"
+        style="max-width: 110px;"
+        min="0"
+        max="100"
+        [value]="volume"
+        (input)="onVolumeChange($event)"
+      />
+    </div>
+
+  </div>
+</footer>

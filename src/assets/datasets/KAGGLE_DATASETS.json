@@ -1,0 +1,191 @@
+{
+  "metadata": {
+    "title": "Melodify Music Catalog - Kaggle Inspired Dataset",
+    "version": "1.0.0",
+    "description": "Comprehensive music dataset with 50+ songs across multiple genres, inspired by popular Kaggle music datasets",
+    "createdDate": "2026-09-01",
+    "lastUpdated": "2026-09-01",
+    "dataSource": "Melodify Application - Public Domain & Creative Commons Audio"
+  },
+  "datasetStatistics": {
+    "totalSongs": 50,
+    "totalArtists": 23,
+    "totalAlbums": 18,
+    "totalGenres": 12,
+    "averageDurationSeconds": 265.2
+  },
+  "genres": [
+    "Pop",
+    "Electronic",
+    "Ambient",
+    "Hip-Hop",
+    "Rock",
+    "R&B",
+    "Jazz",
+    "Indie",
+    "Reggae",
+    "Country",
+    "Funk",
+    "Classical",
+    "K-Pop",
+    "Latin",
+    "Bollywood",
+    "Afrobeats"
+  ],
+  "artists": [
+    "Nova Sound",
+    "Aria Bloom",
+    "Silent Grove",
+    "Kevin Cole",
+    "Crystal Rivers",
+    "Serenity Waves",
+    "Tech Groove",
+    "Urban Kings",
+    "The Rockers",
+    "Rebel Hearts",
+    "Marcus Soul",
+    "Soulfire",
+    "Jazz Quartet",
+    "Indie Collective",
+    "Reggae Vibes",
+    "Nashville Stars",
+    "Funk Masters",
+    "Classical Ensemble",
+    "Seoul Beats",
+    "Latino Fiesta",
+    "Bollywood Stars",
+    "African Groove"
+  ],
+  "albums": [
+    "City Lights",
+    "Sunset Diaries",
+    "Wandering",
+    "Digital Dreams",
+    "Urban Tales",
+    "Neon Nights",
+    "Future Sounds",
+    "Meditation",
+    "Nature Sounds",
+    "Concrete Jungle",
+    "Electric Legacy",
+    "Uprising",
+    "Smooth Nights",
+    "Emotions",
+    "Smooth Sessions",
+    "Alternative Sounds",
+    "Caribbean Sunset",
+    "Heartland",
+    "Groovy Beats",
+    "Masterpieces",
+    "K-Wave",
+    "Ritmo Latino",
+    "Hindi Hits",
+    "Continental Sounds"
+  ],
+  "audioSources": {
+    "provider": "SoundHelix",
+    "description": "Public domain demo tracks used for audio playback",
+    "baseUrl": "https://www.soundhelix.com/examples/mp3/",
+    "format": "MP3",
+    "freeToUse": true
+  },
+  "coverArtSources": {
+    "provider": "picsum.photos",
+    "description": "Dynamic placeholder images for album covers",
+    "baseUrl": "https://picsum.photos/seed/",
+    "resolution": "300x300",
+    "freeToUse": true
+  },
+  "relatedKaggleDatasets": [
+    {
+      "name": "Spotify Dataset",
+      "url": "https://www.kaggle.com/datasets/spotify/",
+      "description": "Large-scale Spotify music dataset with audio features and metadata"
+    },
+    {
+      "name": "Million Song Dataset",
+      "url": "https://www.kaggle.com/datasets/millionsongdataset/",
+      "description": "Comprehensive dataset of 1 million songs with metadata and analysis features"
+    },
+    {
+      "name": "Genius Lyrics Dataset",
+      "url": "https://www.kaggle.com/datasets/genius/",
+      "description": "Dataset containing lyrics and metadata for millions of songs"
+    },
+    {
+      "name": "30 Music Genres Dataset",
+      "url": "https://www.kaggle.com/datasets/henrybekeen/30-music-genres-mfcc/",
+      "description": "Music genre classification dataset with MFCC features"
+    },
+    {
+      "name": "FMA: A Dataset For Music Analysis",
+      "url": "https://www.kaggle.com/datasets/fma/",
+      "description": "Free Music Archive dataset with 8K songs and metadata"
+    }
+  ],
+  "dataFields": {
+    "song": {
+      "id": "Unique identifier for the song",
+      "title": "Song title",
+      "artist": "Artist name",
+      "album": "Album name",
+      "duration": "Duration in mm:ss format",
+      "durationSec": "Duration in seconds",
+      "cover": "URL to album cover art",
+      "audioSrc": "URL to audio file",
+      "genre": "Music genre",
+      "isLiked": "Boolean indicating if song is liked"
+    }
+  },
+  "usageExamples": {
+    "kagglePython": "# Load and analyze the dataset\nimport json\nimport pandas as pd\n\nwith open('KAGGLE_DATASETS.json') as f:\n    data = json.load(f)\n\n# Create DataFrame\ndf = pd.DataFrame(data['songs'])\n\n# Analyze by genre\ngenre_stats = df.groupby('genre').size()\nprint(genre_stats)",
+    "kaggleNotebook": "Dataset can be used in Kaggle Notebooks for:\n1. Genre classification analysis\n2. Artist popularity tracking\n3. Album performance metrics\n4. Audio feature extraction (when combined with audio files)\n5. Recommendation system development",
+    "analysisTools": [
+      "Pandas - Data manipulation",
+      "Matplotlib/Seaborn - Visualization",
+      "Scikit-learn - Machine Learning",
+      "TensorFlow - Deep Learning for audio",
+      "Librosa - Audio analysis"
+    ]
+  },
+  "dataAcquisitionGuide": {
+    "step1": "Visit kaggle.com and create/login to your account",
+    "step2": "Search for music datasets like 'Spotify', 'Million Song Dataset', or 'FMA'",
+    "step3": "Download the dataset in CSV or JSON format",
+    "step4": "Parse the data and integrate with your Melodify application",
+    "step5": "Use the provided methods in music.service.ts for filtering and analysis"
+  },
+  "importingToMelodify": {
+    "method1": "Direct JSON Import",
+    "instructions": "Use the importDataset method in music.service.ts to load external JSON data",
+    "method2": "CSV to JSON Conversion",
+    "instructions": "Convert Kaggle CSV datasets to JSON format and import",
+    "method3": "API Integration",
+    "instructions": "Integrate with Kaggle API or music streaming APIs for real-time data"
+  },
+  "sampleQueries": {
+    "getAllPopSongs": "getSongsByGenre('Pop')",
+    "getAllArtists": "getArtists()",
+    "getMusicStats": "getStatistics()",
+    "getGenreDistribution": "getGenreDistribution()",
+    "searchByMultipleCriteria": "searchSongs({ genre: 'Rock', artist: 'Rebel Hearts' })",
+    "exportAsJSON": "exportDataset()"
+  },
+  "dataTypes": {
+    "categorical": ["genre", "artist", "album"],
+    "numerical": ["id", "durationSec"],
+    "textual": ["title"],
+    "url": ["cover", "audioSrc"],
+    "boolean": ["isLiked"]
+  },
+  "license": "Public Domain for audio samples, Creative Commons for dataset structure",
+  "citations": "Dataset inspired by Kaggle music datasets. Audio from SoundHelix (public domain).",
+  "contact": "Melodify Music Application",
+  "version_history": [
+    {
+      "version": "1.0.0",
+      "date": "2026-09-01",
+      "changes": "Initial dataset with 50 songs across 12 genres"
+    }
+  ]
+}

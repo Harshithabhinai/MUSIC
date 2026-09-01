@@ -1,0 +1,32 @@
+<aside class="bg-panel border-end border-secondary-subtle p-3 d-flex flex-column" style="width: 240px;">
+
+  <!-- Primary navigation -->
+  <ul class="nav nav-pills flex-column mb-4 gap-1">
+    <li class="nav-item" *ngFor="let item of mainNav">
+      <a class="nav-link d-flex align-items-center gap-2"
+         [class.active]="item.active"
+         [class.text-white]="!item.active"
+         href="#">
+        <i class="bi" [ngClass]="item.icon"></i>
+        <span>{{ item.label }}</span>
+      </a>
+    </li>
+  </ul>
+
+  <hr class="border-secondary-subtle" />
+
+  <!-- Playlists -->
+  <div class="d-flex justify-content-between align-items-center mb-2">
+    <span class="text-uppercase text-muted-custom small fw-semibold">Playlists</span>
+    <i class="bi bi-plus-lg cursor-pointer text-muted-custom"></i>
+  </div>
+
+  <ul class="list-unstyled flex-grow-1 overflow-auto">
+    <li *ngFor="let playlist of playlists" class="py-2 cursor-pointer text-truncate">
+      <a class="text-white text-decoration-none small" href="#">
+        <i class="bi bi-music-note-list me-2 text-muted-custom"></i>{{ playlist }}
+      </a>
+    </li>
+  </ul>
+
+</aside>

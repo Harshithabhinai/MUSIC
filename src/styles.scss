@@ -1,0 +1,85 @@
+/* ==== Global App Styles ==== */
+:root {
+  --brand-primary: #1db954;
+  --brand-dark: #121212;
+  --brand-panel: #181818;
+  --brand-panel-light: #242424;
+  --brand-text-muted: #b3b3b3;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  background-color: var(--brand-dark);
+  color: #fff;
+  font-family: 'Segoe UI', Roboto, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: #3a3a3a;
+  border-radius: 4px;
+}
+
+.text-muted-custom {
+  color: var(--brand-text-muted) !important;
+}
+
+.bg-panel {
+  background-color: var(--brand-panel) !important;
+}
+
+.bg-panel-light {
+  background-color: var(--brand-panel-light) !important;
+}
+
+.btn-brand {
+  background-color: var(--brand-primary);
+  border-color: var(--brand-primary);
+  color: #000;
+  font-weight: 600;
+}
+.btn-brand:hover {
+  background-color: #1ed760;
+  border-color: #1ed760;
+  color: #000;
+}
+
+.accent-text {
+  color: var(--brand-primary) !important;
+}
+
+a {
+  text-decoration: none;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+/* Range input styling for player seek/volume bars */
+input[type="range"] {
+  -webkit-appearance: none;
+  height: 4px;
+  border-radius: 2px;
+  background: #4d4d4d;
+  outline: none;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #fff;
+  cursor: pointer;
+}
+input[type="range"]::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #fff;
+  cursor: pointer;
+  border: none;
+}

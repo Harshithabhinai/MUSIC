@@ -1,0 +1,14 @@
+.navbar-brand span {
+  font-size: 1.15rem;
+  letter-spacing: 0.5px;
+}
+
+input.form-control:focus {
+  box-shadow: none;
+  background-color: var(--brand-panel-light);
+  color: #fff;
+}
+
+input.form-control::placeholder {
+  color: var(--brand-text-muted);
+}

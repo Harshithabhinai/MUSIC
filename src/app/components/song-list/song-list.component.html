@@ -1,0 +1,70 @@
+<div class="mb-4">
+  <h2 class="fw-bold mb-1">Good afternoon</h2>
+  <p class="text-muted-custom mb-0">Jump back in, or discover something new below.</p>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-dark table-hover align-middle mb-0" *ngIf="filteredSongs.length; else noResults">
+    <thead>
+      <tr class="text-muted-custom small text-uppercase border-bottom border-secondary-subtle">
+        <th style="width: 40px;">#</th>
+        <th>Title</th>
+        <th class="d-none d-md-table-cell">Album</th>
+        <th class="d-none d-lg-table-cell">Genre</th>
+        <th style="width: 40px;"><i class="bi bi-clock"></i></th>
+        <th style="width: 40px;"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let song of filteredSongs; let i = index; trackBy: trackBySongId"
+          class="song-row cursor-pointer"
+          [class.text-white]="true"
+          (click)="play(song)">
+
+        <!-- Index / play indicator -->
+        <td class="text-muted-custom">
+          <span class="row-index" *ngIf="(currentSong$ | async)?.id !== song.id">{{ i + 1 }}</span>
+          <i class="bi accent-text" *ngIf="(currentSong$ | async)?.id === song.id"
+             [ngClass]="(isPlaying$ | async) ? 'bi-volume-up-fill' : 'bi-pause-fill'"></i>
+        </td>
+
+        <!-- Cover + title/artist -->
+        <td>
+          <div class="d-flex align-items-center gap-3">
+            <div class="position-relative">
+              <img [src]="song.cover" [alt]="song.title" class="rounded" width="44" height="44" />
+              <button
+                class="play-overlay btn btn-sm p-0 d-flex align-items-center justify-content-center"
+                (click)="togglePlayPause(song, $event)">
+                <i class="bi text-white"
+                   [ngClass]="((currentSong$ | async)?.id === song.id && (isPlaying$ | async)) ? 'bi-pause-fill' : 'bi-play-fill'"></i>
+              </button>
+            </div>
+            <div class="text-truncate">
+              <div class="text-truncate" [class.accent-text]="(currentSong$ | async)?.id === song.id">{{ song.title }}</div>
+              <div class="text-muted-custom small text-truncate">{{ song.artist }}</div>
+            </div>
+          </div>
+        </td>
+
+        <td class="d-none d-md-table-cell text-muted-custom">{{ song.album }}</td>
+        <td class="d-none d-lg-table-cell text-muted-custom">{{ song.genre }}</td>
+
+        <td>
+          <i class="bi cursor-pointer"
+             [ngClass]="song.isLiked ? 'bi-heart-fill accent-text' : 'bi-heart text-muted-custom'"
+             (click)="toggleLike(song, $event)"></i>
+        </td>
+
+        <td class="text-muted-custom">{{ song.duration }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <ng-template #noResults>
+    <div class="text-center text-muted-custom py-5">
+      <i class="bi bi-search fs-1 d-block mb-3"></i>
+      No songs match "<strong>{{ searchTerm }}</strong>"
+    </div>
+  </ng-template>
+</div>

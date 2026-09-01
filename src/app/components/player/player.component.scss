@@ -1,0 +1,22 @@
+.play-btn {
+  width: 36px;
+  height: 36px;
+  border: none;
+}
+
+.play-btn i {
+  font-size: 1.1rem;
+  color: #000;
+}
+
+.bi-skip-start-fill,
+.bi-skip-end-fill {
+  color: #fff;
+}
+
+.bi-skip-start-fill:hover,
+.bi-skip-end-fill:hover,
+.bi-shuffle:hover,
+.bi-repeat:hover {
+  color: var(--brand-primary);
+}

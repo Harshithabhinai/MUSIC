@@ -1,0 +1,38 @@
+<nav class="navbar navbar-dark bg-panel px-3 py-2 border-bottom border-secondary-subtle">
+  <div class="d-flex align-items-center w-100 gap-3">
+
+    <!-- Brand -->
+    <a class="navbar-brand fw-bold d-flex align-items-center gap-2 mb-0" href="#">
+      <i class="bi bi-music-note-beamed accent-text fs-4"></i>
+      <span>Melodify</span>
+    </a>
+
+    <!-- Search -->
+    <div class="flex-grow-1 mx-auto" style="max-width: 480px;">
+      <div class="input-group">
+        <span class="input-group-text bg-panel-light border-0 text-muted-custom">
+          <i class="bi bi-search"></i>
+        </span>
+        <input
+          type="text"
+          class="form-control bg-panel-light border-0 text-white"
+          placeholder="Search songs, artists, albums..."
+          [(ngModel)]="searchValue"
+          (input)="onSearchChange()"
+        />
+      </div>
+    </div>
+
+    <!-- Profile -->
+    <div class="d-flex align-items-center gap-2 ms-auto">
+      <button class="btn btn-sm btn-brand rounded-pill px-3 d-none d-sm-inline-block">
+        Upgrade
+      </button>
+      <div class="rounded-circle bg-secondary d-flex align-items-center justify-content-center"
+           style="width: 36px; height: 36px;">
+        <i class="bi bi-person-fill"></i>
+      </div>
+    </div>
+
+  </div>
+</nav>

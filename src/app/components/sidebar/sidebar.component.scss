@@ -1,0 +1,18 @@
+.nav-link {
+  color: var(--brand-text-muted);
+  border-radius: 6px;
+  font-size: 0.95rem;
+}
+
+.nav-link.active {
+  background-color: var(--brand-panel-light) !important;
+  color: #fff !important;
+}
+
+.nav-link:hover {
+  color: #fff;
+}
+
+ul.list-unstyled li:hover a {
+  color: var(--brand-primary) !important;
+}
