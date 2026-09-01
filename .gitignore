@@ -1,0 +1,23 @@
+﻿# Dependencies
+node_modules/
+package-lock.json
+
+# Angular
+dist/
+.angular/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+.env
+.env.local
+
+# Build
+*.js.map
+*.css.map
